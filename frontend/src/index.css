@@ -1,0 +1,457 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen transition-colors duration-300;
+  }
+  
+  .dark body {
+    @apply from-gray-900 to-gray-800;
+  }
+}
+
+@layer components {
+  /* Cards */
+  .card {
+    @apply bg-white rounded-xl shadow-lg p-6 backdrop-blur-sm bg-white/95 border border-gray-100 transition-colors duration-300;
+  }
+  
+  .dark .card {
+    @apply bg-gray-800 border-gray-700 text-white;
+  }
+  
+  /* Cards de estatísticas */
+  .stat-card {
+    @apply bg-white rounded-lg p-4 shadow-md border border-gray-100 hover:shadow-lg transition-all duration-200;
+  }
+  
+  .dark .stat-card {
+    @apply bg-gray-800 border-gray-700;
+  }
+  
+  /* Botões */
+  .btn-primary {
+    @apply px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg 
+           hover:from-blue-600 hover:to-indigo-700 transition-all duration-200 
+           focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  }
+  
+  .btn-secondary {
+    @apply px-4 py-2 bg-white text-gray-700 border border-gray-300 rounded-lg 
+           hover:bg-gray-50 transition-all duration-200 
+           focus:ring-2 focus:ring-gray-500 focus:ring-offset-2;
+  }
+  
+  .dark .btn-secondary {
+    @apply bg-gray-700 text-gray-200 border-gray-600 hover:bg-gray-600;
+  }
+  
+  /* Efeito Glass */
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/80 transition-colors duration-300;
+  }
+  
+  .dark .glass-effect {
+    @apply bg-gray-900/80;
+  }
+
+  /* Inputs */
+  .input-field {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg 
+           focus:ring-2 focus:ring-blue-500 focus:border-transparent
+           bg-white text-gray-900 transition-colors duration-300;
+  }
+  
+  .dark .input-field {
+    @apply bg-gray-700 border-gray-600 text-white;
+  }
+}
+
+@layer utilities {
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .animate-slide-in {
+    animation: slide-in 0.3s ease-out;
+  }
+}
+
+/* ============================================ */
+/* CORREÇÕES PARA MODO ESCURO - CSS PURO        */
+/* ============================================ */
+
+.dark {
+  color-scheme: dark;
+}
+
+/* Cards coloridos - usando CSS puro em vez de @apply */
+.dark .bg-gradient-to-br.from-blue-50.to-blue-100,
+.dark .from-blue-50 {
+  background-image: linear-gradient(to bottom right, rgb(23, 37, 84), rgb(30, 58, 138)) !important;
+}
+
+.dark .bg-gradient-to-br.from-green-50.to-green-100,
+.dark .from-green-50 {
+  background-image: linear-gradient(to bottom right, rgb(6, 78, 59), rgb(6, 95, 70)) !important;
+}
+
+.dark .bg-gradient-to-br.from-purple-50.to-purple-100,
+.dark .from-purple-50 {
+  background-image: linear-gradient(to bottom right, rgb(59, 7, 100), rgb(88, 28, 135)) !important;
+}
+
+.dark .bg-gradient-to-br.from-orange-50.to-orange-100,
+.dark .from-orange-50 {
+  background-image: linear-gradient(to bottom right, rgb(124, 45, 18), rgb(154, 52, 18)) !important;
+}
+
+.dark .bg-gradient-to-br.from-red-50.to-red-100,
+.dark .from-red-50 {
+  background-image: linear-gradient(to bottom right, rgb(127, 29, 29), rgb(153, 27, 27)) !important;
+}
+
+/* Textos coloridos no modo escuro */
+.dark .text-blue-600 {
+  color: rgb(96, 165, 250) !important;
+}
+
+.dark .text-blue-900 {
+  color: rgb(147, 197, 253) !important;
+}
+
+.dark .text-green-600 {
+  color: rgb(74, 222, 128) !important;
+}
+
+.dark .text-green-900 {
+  color: rgb(134, 239, 172) !important;
+}
+
+.dark .text-purple-600 {
+  color: rgb(192, 132, 252) !important;
+}
+
+.dark .text-purple-900 {
+  color: rgb(216, 180, 254) !important;
+}
+
+.dark .text-orange-600 {
+  color: rgb(251, 146, 60) !important;
+}
+
+.dark .text-orange-900 {
+  color: rgb(253, 186, 116) !important;
+}
+
+.dark .text-red-600 {
+  color: rgb(248, 113, 113) !important;
+}
+
+.dark .text-indigo-600 {
+  color: rgb(129, 140, 248) !important;
+}
+
+/* Backgrounds coloridos */
+.dark .bg-blue-50 {
+  background-color: rgb(23, 37, 84, 0.5) !important;
+}
+
+.dark .bg-green-50 {
+  background-color: rgb(6, 78, 59, 0.5) !important;
+}
+
+.dark .bg-purple-50 {
+  background-color: rgb(59, 7, 100, 0.5) !important;
+}
+
+.dark .bg-orange-50 {
+  background-color: rgb(124, 45, 18, 0.5) !important;
+}
+
+.dark .bg-indigo-50 {
+  background-color: rgb(49, 46, 129, 0.5) !important;
+}
+
+.dark .bg-blue-100 {
+  background-color: rgb(30, 58, 138, 0.3) !important;
+}
+
+.dark .bg-indigo-100 {
+  background-color: rgb(55, 48, 163, 0.3) !important;
+}
+
+/* Footer e Navbar */
+.dark footer,
+.dark nav {
+  background-color: rgb(17, 24, 39, 0.8) !important;
+  border-color: rgb(55, 65, 81) !important;
+}
+
+.dark footer .text-gray-500,
+.dark nav .text-gray-500 {
+  color: rgb(156, 163, 175) !important;
+}
+
+.dark footer .text-gray-400,
+.dark nav .text-gray-400 {
+  color: rgb(107, 114, 128) !important;
+}
+
+.dark .border-gray-200 {
+  border-color: rgb(55, 65, 81) !important;
+}
+
+.dark .bg-white\/50 {
+  background-color: rgb(17, 24, 39, 0.8) !important;
+}
+
+.dark .bg-white\/80 {
+  background-color: rgb(17, 24, 39, 0.9) !important;
+}
+
+/* Cards de dataset selecionado */
+.dark .bg-gradient-to-r.from-blue-50.to-indigo-50 {
+  background-image: linear-gradient(to right, rgb(23, 37, 84, 0.5), rgb(49, 46, 129, 0.5)) !important;
+}
+
+.dark .border-blue-200 {
+  border-color: rgb(30, 64, 175) !important;
+}
+
+.dark .border-blue-500 {
+  border-color: rgb(59, 130, 246) !important;
+}
+
+/* Hover states */
+.dark .hover\:bg-gray-100:hover {
+  background-color: rgb(55, 65, 81) !important;
+}
+
+.dark .hover\:bg-gray-50:hover {
+  background-color: rgb(31, 41, 55) !important;
+}
+
+.dark .hover\:bg-gray-700:hover {
+  background-color: rgb(55, 65, 81) !important;
+}
+
+/* Área de upload */
+.dark .bg-blue-50 {
+  background-color: rgb(23, 37, 84, 0.3) !important;
+}
+
+/* Barra de progresso */
+.dark .bg-gray-200 {
+  background-color: rgb(55, 65, 81) !important;
+}
+
+/* Inputs e campos */
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: rgb(55, 65, 81) !important;
+  border-color: rgb(75, 85, 99) !important;
+  color: white !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: rgb(156, 163, 175) !important;
+}
+
+.dark select option {
+  background-color: rgb(31, 41, 55) !important;
+  color: white !important;
+}
+
+/* Gráficos Recharts */
+.dark .recharts-cartesian-grid-horizontal line,
+.dark .recharts-cartesian-grid-vertical line {
+  stroke: rgb(55, 65, 81) !important;
+}
+
+.dark .recharts-text {
+  fill: rgb(156, 163, 175) !important;
+}
+
+.dark .recharts-legend-item-text {
+  color: rgb(209, 213, 219) !important;
+}
+
+.dark .recharts-tooltip-wrapper,
+.dark .recharts-default-tooltip {
+  background-color: rgb(31, 41, 55) !important;
+  border: 1px solid rgb(55, 65, 81) !important;
+  color: rgb(243, 244, 246) !important;
+}
+
+.dark .recharts-tooltip-label {
+  color: rgb(209, 213, 219) !important;
+}
+
+.dark .recharts-tooltip-item {
+  color: rgb(229, 231, 235) !important;
+}
+
+/* Textos gerais */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6,
+.dark .text-gray-900 {
+  color: rgb(255, 255, 255) !important;
+}
+
+.dark p,
+.dark .text-gray-700,
+.dark .text-gray-600 {
+  color: rgb(209, 213, 219) !important;
+}
+
+.dark .text-gray-500 {
+  color: rgb(156, 163, 175) !important;
+}
+
+.dark .text-gray-400 {
+  color: rgb(107, 114, 128) !important;
+}
+
+.dark span:not([class*="text-"]) {
+  color: rgb(209, 213, 219);
+}
+
+.dark label {
+  color: rgb(209, 213, 219) !important;
+}
+
+/* Divisores e bordas */
+.dark hr,
+.dark .border-t,
+.dark .border-b,
+.dark .border-l,
+.dark .border-r,
+.dark .border-gray-100,
+.dark .border-gray-300 {
+  border-color: rgb(55, 65, 81) !important;
+}
+
+/* Botões */
+.dark button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Focus rings */
+.dark *:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(96, 165, 250), 0 0 0 4px rgb(31, 41, 55) !important;
+}
+
+/* Scrollbar */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: rgb(31, 41, 55);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgb(75, 85, 99);
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgb(107, 114, 128);
+}
+
+/* Seleção de texto */
+.dark ::selection {
+  background-color: rgb(37, 99, 235);
+  color: white;
+}
+
+.dark ::-moz-selection {
+  background-color: rgb(37, 99, 235);
+  color: white;
+}
+
+/* Links */
+.dark a {
+  color: rgb(96, 165, 250) !important;
+}
+
+.dark a:hover {
+  color: rgb(147, 197, 253) !important;
+}
+
+/* Badges e tags */
+.dark .bg-blue-500 {
+  background-color: rgb(59, 130, 246) !important;
+}
+
+.dark .bg-green-500 {
+  background-color: rgb(34, 197, 94) !important;
+}
+
+.dark .bg-red-500 {
+  background-color: rgb(239, 68, 68) !important;
+}
+
+/* Sombras */
+.dark .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgb(0, 0, 0, 0.5), 0 4px 6px -4px rgb(0, 0, 0, 0.5) !important;
+}
+
+.dark .shadow-md {
+  box-shadow: 0 4px 6px -1px rgb(0, 0, 0, 0.3), 0 2px 4px -2px rgb(0, 0, 0, 0.3) !important;
+}
+
+.dark .shadow-sm {
+  box-shadow: 0 1px 2px 0 rgb(0, 0, 0, 0.3) !important;
+}
+
+/* Transições suaves */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.no-transition,
+.no-transition * {
+  transition: none !important;
+}
+
+/* Cor de fundo do body no modo escuro */
+.dark body {
+  background-image: linear-gradient(to bottom right, rgb(17, 24, 39), rgb(31, 41, 55)) !important;
+}
