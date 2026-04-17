@@ -1,0 +1,55 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  security-scan:
+    name: Ì¥í Security Scan
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Ì¥ç Scan de depend√™ncias (Backend)
+      uses: snyk/actions/node@master
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        args: --severity-threshold=high
+      continue-on-error: true
+    
+    - name: Ì¥ç Scan de depend√™ncias (Frontend)
+      uses: snyk/actions/node@master
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        args: --severity-threshold=high --file=frontend/package.json
+      continue-on-error: true
+  
+  size-check:
+    name: Ì≥è Bundle Size Check
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: Build Frontend
+      working-directory: ./frontend
+      run: |
+        npm install
+        npm run build
+    
+    - name: Ì≥ä Analisar tamanho do bundle
+      working-directory: ./frontend
+      run: |
+        echo "Ì≥¶ Tamanho do Bundle:"
+        du -sh dist/
+        echo ""
+        echo "Ì≥Å Maiores arquivos:"
+        find dist -type f -exec du -h {} + | sort -rh | head -10
